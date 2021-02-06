@@ -24,8 +24,8 @@ def next_tenth_test():
 
     for t in test_cases:
         if next_tenth(t[0]) == t[1]:
-            print('pass')
+            print('pass:', 'x:', t[0], 'actual:', next_tenth(t[0]), 'expected:', t[1])
         else:
-            print('fail')
+            print('fail:', 'x:', t[0], 'actual:', next_tenth(t[0]), 'expected:', t[1])
 
 next_tenth_test()
