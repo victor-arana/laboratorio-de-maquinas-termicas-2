@@ -1,14 +1,24 @@
 def next_tenth(x):
-    import math
     '''
     Given a real number x, return the closest integer
     number y such as x <= y, and b is divisible by 10.
     x: float number
     return y: closest integer such as x <= y and b % 10.
     '''
-    y = math.floor(x) + 10
-    return y
+    import math
 
+    y = x
+    if ( y % 10 ) == 0:
+        return y
+    elif (math.floor(y) % 10) == 0:
+        return math.floor(y)
+    else:
+        y = math.floor(y)
+        if (math.floor(y) % 10) == 0:
+            return y
+        else:
+            return -1
+        
 def next_tenth_test():
     '''
     test several cases for the function
