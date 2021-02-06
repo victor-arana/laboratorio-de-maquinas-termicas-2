@@ -14,7 +14,9 @@ def next_tenth_test():
     test several cases for the function
     '''
     test_cases = []
-    test_cases.append([0.0,10.0])
+    test_cases.append([-10.0, -10.0])
+    test_cases.append([0.0,0.0])
+    test_cases.append([10.0,10.0])
     test_cases.append([0.5,0.0])
     test_cases.append([5.0,10.0])
     test_cases.append([9.6,10.0])
