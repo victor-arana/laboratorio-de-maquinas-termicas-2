@@ -5,7 +5,7 @@ def next_tenth(x):
     x: float number
     return y: closest integer such as x <= y and b % 10.
     '''
-    y = x
+    y = x + 10
     return y
 
 def next_tenth_test():
