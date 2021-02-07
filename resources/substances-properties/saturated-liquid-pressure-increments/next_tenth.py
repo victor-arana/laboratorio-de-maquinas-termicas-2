@@ -28,7 +28,9 @@ def next_tenth(x):
     next_tenth = None
     
     if x.is_integer() and (x % 10 == 0):
-        next_tenth = x + 10   
+        next_tenth = x + 10 
+    elif x.is_integer():
+        next_tenth = ( math.trunc( x / 10 ) * 10 )  + 10 
     elif (math.floor(x) % 10) == 0:
         return x
     else:
