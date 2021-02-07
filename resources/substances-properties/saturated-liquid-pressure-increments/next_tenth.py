@@ -42,10 +42,15 @@ def next_tenth_test():
     test several cases for the function
     '''
     test_cases = readCSV('test-cases.csv',',')
+    separator = ','
+    print('status', 'argument', 'actual', 'expected', sep=separator)
     for t in test_cases:
-        if next_tenth(t[0]) == t[1]:
-            print('pass:', 'x:', t[0], 'actual:', next_tenth(t[0]), 'expected:', t[1])
-        else:
-            print('fail:', 'x:', t[0], 'actual:', next_tenth(t[0]), 'expected:', t[1])
+        argument = t[0]
+        actual = next_tenth(argument) 
+        expected = t[1]   
+        status = 'FAILURE'
+        if actual == expected:
+            status = 'success'
+        print(status, argument, actual, expected, sep=separator)
 
 next_tenth_test()
