@@ -25,17 +25,19 @@ def next_tenth(x):
     '''
     import math
 
-    y = x
-    if ( y % 10 ) == 0:
-        return y
-    elif (math.floor(y) % 10) == 0:
-        return y
+    next_tenth = None
+    
+    if x.is_integer() and (x % 10 == 0):
+        next_tenth = x + 10   
+    elif (math.floor(x) % 10) == 0:
+        return x
     else:
-        y = math.floor(y)
-        if (math.floor(y) % 10) == 0:
-            return y
+        x = math.floor(x)
+        if (math.floor(x) % 10) == 0:
+            return x
         else:
             return -1
+    return next_tenth
         
 def next_tenth_test():
     '''
