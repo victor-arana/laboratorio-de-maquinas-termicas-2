@@ -29,18 +29,15 @@ def next_tenth(x):
     
     if x.is_integer() and (x % 10 == 0):
         next_tenth = x + 10 
-    elif x.is_integer():
+    elif ( x.is_integer() and x < -1 ) or ( x.is_integer() and x > 1 ):
         next_tenth = ( math.trunc( x / 10 ) * 10 )  + 10 
-    elif (math.floor(x) % 10) == 0:
-        return x
+    elif x < 0:
+        next_tenth = ( math.trunc( x / 10 ) * 10 )
     else:
-        x = math.floor(x)
-        if (math.floor(x) % 10) == 0:
-            return x
-        else:
-            return -1
+        next_tenth = ( math.trunc( x / 10 ) * 10 )  + 10 
+
     return next_tenth
-        
+
 def next_tenth_test():
     '''
     test several cases for the function
