@@ -1,3 +1,25 @@
+def next_tenth(x):
+    '''
+    Given a real number x, return the closest integer
+    number y such as x <= y, and b is divisible by 10.
+    x: float number
+    return y: closest integer such as x <= y and b % 10.
+    '''
+    import math
+
+    next_tenth = None
+    
+    if x.is_integer() and (x % 10 == 0):
+        next_tenth = x + 10 
+    elif ( x.is_integer() and x < -1 ) or ( x.is_integer() and x > 1 ):
+        next_tenth = ( math.trunc( x / 10 ) * 10 )  + 10 
+    elif x < 0:
+        next_tenth = ( math.trunc( x / 10 ) * 10 )
+    else:
+        next_tenth = ( math.trunc( x / 10 ) * 10 )  + 10 
+
+    return next_tenth
+
 def import_data(digits, P_low, P_high, ΔP):
     import subprocess
     call_string = "./retrieve_data.sh %s %s %s %s"  
@@ -18,11 +40,10 @@ def readCSV(csv_file_path):
 def generateTempIncrements(i,ΔT):
     import math
     temp_increments = []
-    test = [[3,4]]
-    t_0 = i[1]
-    t_1 = t_0 + math.floor(abs(t_0))%10 
-    print('t_0:', t_0) 
-    print('t_1:', t_1)
+    n = 3
+    low = next_tenth(i[1])
+    high = ΔT * n 
+    test = [[i[0], low],[i[0], low + 10], [i[0], low + 20]]
     temp_increments.extend([i])
     temp_increments.extend(test) 
     return temp_increments 
