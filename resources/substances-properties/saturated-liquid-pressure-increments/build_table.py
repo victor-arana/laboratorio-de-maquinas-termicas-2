@@ -20,10 +20,10 @@ def next_tenth(x):
 
     return next_tenth
 
-def import_data(digits, P_low, P_high, ΔP):
+def import_data_to(digits, P_low, P_high, ΔP, destination):
     import subprocess
-    call_string = "./retrieve_data.sh %s %s %s %s"  
-    subprocess.check_call(call_string % (str(digits), str(P_low), str(P_high), str(ΔP)), shell=True)
+    call_string = "./retrieve_data.sh %s %s %s %s %s"  
+    subprocess.check_call(call_string % (str(digits), str(P_low), str(P_high), str(ΔP), str(destination)), shell=True)
 
 def readCSV(csv_file_path):
     import csv
@@ -54,7 +54,7 @@ P_high = 1.8
 ΔP = 0.4
 ΔT = 10
 
-import_data(digits, P_low, P_high, ΔP)
+import_data_to(digits, P_low, P_high, ΔP, 'saturated_liquid_pressure_increments')
 P_Ts = readCSV('saturated-liquid-pressure-increments.csv')
 
 P_T = []
