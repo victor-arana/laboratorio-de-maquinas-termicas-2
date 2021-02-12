@@ -20,13 +20,15 @@ def next_tenth(x):
 
     return next_tenth
 
-def import_data_to(digits, P_low, P_high, ΔP, destination, substance):
+def import_data_to(digits, P_low, P_high, ΔP, destination, substance, data_type):
     import subprocess
     substance_id = ''
     if substance == '134a':
         substance_id = 'C811972'
-    call_string = "./retrieve_data.sh %s %s %s %s %s %s"  
-    subprocess.check_call(call_string % (str(digits), str(P_low), str(P_high), str(ΔP), str(destination), substance_id), shell=True)
+    if data_type == 'saturation_temperature':
+        data_type = 'SatT'
+    call_string = "./retrieve_data.sh %d %d %d %d %s %s %s"  
+    subprocess.check_call(call_string % (digits, P_low, P_high, ΔP, destination, substance_id, data_type), shell=True)
 
 def readCSV(csv_file_path):
     import csv
@@ -57,7 +59,7 @@ P_high = 1.8
 ΔP = 0.4
 ΔT = 10
 
-import_data_to(digits, P_low, P_high, ΔP, 'saturated_liquid_pressure_increments', '134a')
+import_data_to(digits, P_low, P_high, ΔP, 'saturated_liquid_pressure_increments', '134a', 'saturation_temperature')
 P_Ts = readCSV('saturated-liquid-pressure-increments.csv')
 
 P_T = []
