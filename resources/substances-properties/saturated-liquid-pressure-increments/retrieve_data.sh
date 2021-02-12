@@ -1,9 +1,11 @@
 DIGITS=$1
-PRESSURE_LOW=$2
-PRESSURE_HIGH=$3
-PRESSURE_INCREMENT=$4
+P_LOW=$2
+P_HIGH=$3
+P_INCREMENT=$4
 DESTINATION=$5
-URL="https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C811972&Type=SatT&Digits=$DIGITS&PLow=$PRESSURE_LOW&PHigh=$PRESSURE_HIGH&PInc=$PRESSURE_INCREMENT&RefState=DEF&TUnit=C&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm"
+ID="C811972" #C811972: 134a
+TYPE="SatT" #SatT: Saturation temperature increments
+URL="https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=$ID&Type=$TYPE&Digits=$DIGITS&PLow=$P_LOW&PHigh=$P_HIGH&PInc=$P_INCREMENT&RefState=DEF&TUnit=C&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm"
 echo $URL
 curl --silent --output $DESTINATION-tmp.csv $URL
 # 1: Temperature [C]
