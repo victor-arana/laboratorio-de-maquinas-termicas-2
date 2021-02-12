@@ -3,7 +3,7 @@ P_LOW=$2
 P_HIGH=$3
 P_INCREMENT=$4
 DESTINATION=$5
-ID="C811972" #C811972: 134a
+ID=$6 #C811972: 134a
 TYPE="SatT" #SatT: Saturation temperature increments
 URL="https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=$ID&Type=$TYPE&Digits=$DIGITS&PLow=$P_LOW&PHigh=$P_HIGH&PInc=$P_INCREMENT&RefState=DEF&TUnit=C&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm"
 echo $URL
