@@ -5,6 +5,7 @@ P_LOW=$2
 P_HIGH=$3
 P_INCREMENT=$4
 DESTINATION=$5
+PRESSURE=$8
 #IDs:
 #    C811972: 134a    
 ID=$6 
@@ -17,7 +18,7 @@ if [ "$TYPE" = "SatT" ]; then
     URL="https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=$ID&Type=$TYPE&Digits=$DIGITS&PLow=$P_LOW&PHigh=$P_HIGH&PInc=$P_INCREMENT&RefState=DEF&TUnit=C&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm"
 else 
     if [ "$TYPE" = 'IsoBar' ]; then
-	    URL="https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=C811972&Type=IsoBar&Digits=5&P=0.6&THigh=-10&TLow=-30&TInc=10&RefState=DEF&TUnit=C&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm"
+	    URL="https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=$ID&Type=$TYPE&Digits=$DIGITS&P=$PRESSURE&THigh=$P_HIGH&TLow=$P_LOW&TInc=$P_INCREMENT&RefState=DEF&TUnit=C&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm"
     fi
 fi
 echo $URL
