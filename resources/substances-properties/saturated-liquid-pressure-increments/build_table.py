@@ -49,11 +49,11 @@ def readCSV(csv_file_path):
 def generateTempIncrements(i,ΔT):
     import math
     temp_increments = []
-    n = 3
+    n = 10 
     low = next_tenth(i[1])
     high = ΔT * n
-    import_data_to(5, low, high, ΔT, 'isobaric_temperature_increments_' + str(i[0]), '134a', 'isobaric', i[0]) 
-    test = [[i[0], low],[i[0], low + 10], [i[0], low + 20]]
+    import_data_to(5, low, high, ΔT, 'isobaric_temperature_increments_' + str(i[0]), '134a', 'isobaric', i[0])
+    test = readCSV('isobaric_temperature_increments_' + str(i[0]) + '.csv')
     temp_increments.extend([i])
     temp_increments.extend(test) 
     return temp_increments 
