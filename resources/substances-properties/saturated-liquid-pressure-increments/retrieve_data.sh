@@ -16,12 +16,13 @@ ID=$6
 TYPE=$7
 if [ "$TYPE" = "SatT" ]; then
     URL="https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=$ID&Type=$TYPE&Digits=$DIGITS&PLow=$P_LOW&PHigh=$P_HIGH&PInc=$P_INCREMENT&RefState=DEF&TUnit=C&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm"
+echo $URL
 else 
     if [ "$TYPE" = 'IsoBar' ]; then
 	    URL="https://webbook.nist.gov/cgi/fluid.cgi?Action=Data&Wide=on&ID=$ID&Type=$TYPE&Digits=$DIGITS&P=$PRESSURE&THigh=$P_HIGH&TLow=$P_LOW&TInc=$P_INCREMENT&RefState=DEF&TUnit=C&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm"
     fi
+    echo $URL
 fi
-echo $URL
 curl --silent --output $DESTINATION-tmp.csv $URL
 # 1: Temperature [C]
 # 2: Pressure [bar]

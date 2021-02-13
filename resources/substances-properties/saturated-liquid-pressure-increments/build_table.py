@@ -22,13 +22,17 @@ def next_tenth(x):
 
 def import_data_to(digits, P_low, P_high, ΔP, destination, substance, data_type, pressure):
     import subprocess
+    
     substance_id = ''
     if substance == '134a':
         substance_id = 'C811972'
+    
     if data_type == 'saturation_temperature':
         data_type = 'SatT'
-    call_string = "./retrieve_data.sh %d %d %d %d %s %s %s %d"  
-    subprocess.check_call(call_string % (digits, P_low, P_high, ΔP, destination, substance_id, data_type, pressure), shell=True)
+    elif data_type == 'isobaric':
+        data_type = 'IsoBar'
+    call_string = "./retrieve_data.sh %d %d %d %d %s %s %s %s"  
+    subprocess.check_call(call_string % (digits, P_low, P_high, ΔP, destination, substance_id, data_type, str(pressure)), shell=True)
 
 def readCSV(csv_file_path):
     import csv
@@ -47,7 +51,8 @@ def generateTempIncrements(i,ΔT):
     temp_increments = []
     n = 3
     low = next_tenth(i[1])
-    high = ΔT * n 
+    high = ΔT * n
+    import_data_to(5, low, high, ΔT, 'isobaric_temperature_increments_' + str(i[0]), '134a', 'isobaric', i[0]) 
     test = [[i[0], low],[i[0], low + 10], [i[0], low + 20]]
     temp_increments.extend([i])
     temp_increments.extend(test) 
